@@ -26,11 +26,11 @@ public class Order {
     OrderStatus status;
     Float total;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
-
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id", referencedColumnName = "id")
+    private Customer owner;
 
 }
